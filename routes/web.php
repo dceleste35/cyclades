@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Home;
 use App\Livewire\ManageApplications;
 use App\Livewire\Test;
 use Illuminate\Support\Facades\Route;
@@ -9,3 +10,9 @@ use Illuminate\Support\Facades\Route;
 // Route::name('inscription.')->group(function () {
 //     Route::get('gerer-les-candidatures', ManageApplications::class)->name('manage');
 // });
+
+Route::get('/', Home::class)->name('home');
+
+Route::name('inscription.')->group(function () {
+    Route::get('gerer-les-candidatures', ManageApplications::class)->name('manage');
+});
