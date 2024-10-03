@@ -1,0 +1,28 @@
+{
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "plugins": [
+        "prettier-plugin-blade",
+        "prettier-plugin-organize-attributes",
+        "prettier-plugin-tailwindcss"
+    ],
+    "attributeGroups": ["$CODE_GUIDE"],
+    "overrides": [
+        {
+            "files": ["*.blade.php"],
+            "options": {
+                "parser": "blade",
+                "printWidth": 120,
+                "tabWidth": 4
+            }
+        },
+        {
+            "files": ["*.config.js"],
+            "options": {
+                "semi": false,
+                "trailingComma": "none"
+            }
+        }
+    ]
+}
