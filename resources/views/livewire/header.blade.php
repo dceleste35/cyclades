@@ -7,63 +7,212 @@ new class extends Component {
 }; ?>
 
 <div class="min-h-full">
-    <nav class="border-b border-gray-200 bg-white">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <nav class="border-b border-gray-200 bg-white" aria-label="Navigation principale">
+        <div class="mx-auto max-w-7xl">
             <div class="flex h-16 justify-between">
-                <div class="flex">
-                    <div class="flex flex-shrink-0 items-center">
-                        <img
-                            class="block h-8 w-auto lg:hidden"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                            alt="Your Company"
-                        />
-                        <img
-                            class="hidden h-8 w-auto lg:block"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                            alt="Your Company"
-                        />
+                <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8" x-data>
+                    <div
+                        class="relative inline-block h-full border-b-2 text-left"
+                        x-data="{ open: false }"
+                        x-on:mouseover="open = true"
+                        x-on:mouseleave="open = false"
+                        x-bind:class="
+                            {{ request()->routeIs('home') }}
+                                ? 'border-indigo-500 text-gray-900'
+                                : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                        "
+                    >
+                        <div class="flex h-full">
+                            <a
+                                class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+                                href="/"
+                                aria-current="page"
+                            >
+                                Accueil
+                                <x-heroicon-o-chevron-down
+                                    class="ml-1 h-5 w-5 transition hover:scale-110"
+                                    aria-label="Ouvrir le sous-menu Accueil"
+                                    x-bind:class="{'rotate-180': open}"
+                                />
+                            </a>
+                        </div>
+
+                        <div
+                            class="absolute left-0 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="menu-button"
+                            x-show="open"
+                            x-transition:enter="transition duration-100 ease-out"
+                            x-transition:enter-start="scale-95 transform opacity-0"
+                            x-transition:enter-end="scale-100 transform opacity-100"
+                            x-transition:leave="transition duration-75 ease-in"
+                            x-transition:leave-start="scale-100 transform opacity-100"
+                            x-transition:leave-end="scale-95 transform opacity-0"
+                            tabindex="-1"
+                        >
+                            <div class="py-1" role="none">
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Option 1
+                                </a>
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Option 2
+                                </a>
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Option 3
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8" x-data>
-                        <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-                        <a
-                            class="inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
-                            href="{{ route('test') }}"
-                            aria-current="page"
-                            x-bind:class="
-                                {{ request()->routeIs('test') }}
-                                    ? 'border-indigo-500 text-gray-900'
-                                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                            "
+                    <div
+                        class="relative inline-block h-full border-b-2 border-transparent text-left text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                        x-data="{ open: false }"
+                        x-on:mouseover="open = true"
+                        x-on:mouseleave="open = false"
+                    >
+                        <div class="flex h-full">
+                            <a
+                                class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+                                href="#"
+                                aria-current="page"
+                            >
+                                Réglementation
+                                <x-heroicon-o-chevron-down
+                                    class="ml-1 h-5 w-5 transition hover:scale-110"
+                                    aria-label="Ouvrir le sous-menu Réglementation"
+                                    x-bind:class="{'rotate-180': open}"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="relative inline-block h-full border-b-2 text-left"
+                        x-data="{ open: false }"
+                        x-on:keyup.enter="open = !open"
+                        x-on:keyup.escape="open = false"
+                        x-on:mouseover="open = true"
+                        x-on:mouseleave="open = false"
+                        x-bind:class="
+                            {{ request()->routeIs('inscription.*') }}
+                                ? 'border-indigo-500 text-gray-900'
+                                : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                        "
+                    >
+                        <div class="flex h-full">
+                            <a
+                                class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+                                href="#"
+                                aria-current="page"
+                            >
+                                Inscription
+                                <x-heroicon-o-chevron-down
+                                    class="ml-1 h-5 w-5 transition hover:scale-110"
+                                    aria-label="Ouvrir le sous-menu Inscription"
+                                    x-bind:class="{'rotate-180': open}"
+                                />
+                            </a>
+                        </div>
+                        <div
+                            class="absolute left-0 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="menu-button"
+                            x-show="open"
+                            x-transition:enter="transition duration-100 ease-out"
+                            x-transition:enter-start="scale-95 transform opacity-0"
+                            x-transition:enter-end="scale-100 transform opacity-100"
+                            x-transition:leave="transition duration-75 ease-in"
+                            x-transition:leave-start="scale-100 transform opacity-100"
+                            x-transition:leave-end="scale-95 transform opacity-0"
+                            tabindex="-1"
                         >
-                            Dashboard
-                        </a>
-                        <a
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            href="#"
-                        >
-                            Team
-                        </a>
-                        <a
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            href="#"
-                        >
-                            Projects
-                        </a>
-                        <a
-                            class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                            href="#"
-                        >
-                            Calendar
-                        </a>
+                            <div class="py-1" role="none">
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Gérer les sevices d'inscription
+                                </a>
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="{{ route('inscription.manage') }}"
+                                    role="menuitem"
+                                >
+                                    Gérer les inscriptions
+                                </a>
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Gérer les mesures handicap
+                                </a>
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Editer les listes de candidatures
+                                </a>
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Editer liste des candidats allophones
+                                </a>
+                                <a
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    href="#"
+                                    role="menuitem"
+                                >
+                                    Editer des confirmations d'inscription
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="relative inline-block h-full border-b-2 border-transparent text-left text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                        x-data="{ open: false }"
+                        x-on:mouseover="open = true"
+                        x-on:mouseleave="open = false"
+                    >
+                        <div class="flex h-full">
+                            <a
+                                class="inline-flex items-center px-1 pt-1 text-sm font-medium"
+                                href="#"
+                                aria-current="page"
+                            >
+                                Orga-affection
+                                <x-heroicon-o-chevron-down
+                                    class="ml-1 h-5 w-5 transition hover:scale-110"
+                                    aria-label="Ouvrir le sous-menu Orga-affection"
+                                    x-bind:class="{'rotate-180': open}"
+                                />
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
                     <button
                         class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         type="button"
+                        aria-label="Voir les notifications"
                     >
-                        <span class="absolute -inset-1.5"></span>
-                        <span class="sr-only">View notifications</span>
+                        <span class="sr-only">Voir les notifications</span>
                         <svg
                             class="h-6 w-6"
                             aria-hidden="true"
@@ -89,13 +238,13 @@ new class extends Component {
                                 type="button"
                                 aria-expanded="false"
                                 aria-haspopup="true"
+                                aria-label="Ouvrir le menu utilisateur"
                             >
-                                <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only">Open user menu</span>
+                                <span class="sr-only">Ouvrir le menu utilisateur</span>
                                 <img
                                     class="h-8 w-8 rounded-full"
                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt=""
+                                    alt="Photo de profil utilisateur"
                                 />
                             </button>
                         </div>
