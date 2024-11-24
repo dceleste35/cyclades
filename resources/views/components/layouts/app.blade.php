@@ -34,7 +34,7 @@
                         <li>
                             <a
                                 class="no-underline"
-                                href="#"
+                                href="/"
                                 aria-current="page"
                                 x-bind:class="
                                     {{ request()->routeIs('home') }}
@@ -49,7 +49,7 @@
                         <li><a class="text-gray-600 no-underline hover:text-gray-800" href="#">Réglementation</a></li>
                         <li class="group relative">
                             <a
-                                class="text-gray-600 no-underline hover:text-gray-800"
+                                class="no-underline"
                                 href="#"
                                 aria-haspopup="true"
                                 aria-expanded="false"
