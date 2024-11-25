@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Candidate;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -12,39 +13,40 @@ class ModifyCandadacy extends Component
     public $criteresSelectionnes = [];
 
     public $criteresDisponibles = [
-        'N° Candidat',
-        'N° Inscription',
-        'Nom de famille',
-        'Nom d usage',
-        'Prénoms',
-        'Date de naissance',
-        'Sexe',
-        'INE',
-        'Nationalité',
-        'Pays de Naissance',
-        'Candidat allophone',
-        'Qualification présentée',
-        'Examen',
-        'Enseignement de spécialité',
-        'Section de langue',
-        'Langue de la section',
-        'Parcours BFI',
-        'Parcours BFI en 1ère',
-        'Section de langue en 1ère',
-        'DNL de la SELO',
-        'Etat',
-        'Candidature validée',
-        'Discipline éloignée',
-        'Catégorie du candidat',
-        'Catégorie du candidat en 1ère',
+        'numero_candidat' => 'N° Candidat',
+        'numero_inscription' => 'N° Inscription',
+        'nom_famille' => 'Nom de famille',
+        'nom_usage' => 'Nom d usage',
+        'prenom' => 'Prénoms',
+        'date_naissance' => 'Date de naissance',
+        'sexe' => 'Sexe',
+        'ine' => 'INE',
+        'nationalite' => 'Nationalité',
+        'pays_naissance' => 'Pays de Naissance',
+        'allophone' => 'Candidat allophone',
+        'qualification_presentee' => 'Qualification présentée',
+        'examen' => 'Examen',
+        'enseignement_specialite' => 'Enseignement de spécialité',
+        'section_langue' => 'Section de langue',
+        'langue_section' => 'Langue de la section',
+        'parcours_bfi' => 'Parcours BFI',
+        'parcours_bfi_premiere' => 'Parcours BFI en 1ère',
+        'section_langue_premiere' => 'Section de langue en 1ère',
+        'dnl_selo' => 'DNL de la SELO',
+        'etat' => 'Etat',
+        'candidature_validee' => 'Candidature validée',
+        'discipline_eloignee' => 'Discipline éloignée',
+        'categorie_candidat' => 'Catégorie du candidat',
+        'categorie_candidat_premiere' => 'Catégorie du candidat en 1ère',
     ];
 
     public $valeursCriteres = [];
 
-    public function ajouterCritere($critere)
+    public function ajouterCritere($key, $critere)
     {
         $this->criteresSelectionnes[] = $critere;
         $this->valeursCriteres[$critere] = [
+            'key' => $key,
             'comparateur' => 'egal',
             'valeur' => '',
         ];
@@ -74,7 +76,17 @@ class ModifyCandadacy extends Component
 
     public function rechercher()
     {
-        dd($this->valeursCriteres);
+
+        $candidats = Candidate::where(function ($query) {
+            foreach ($this->valeursCriteres as $critere) {
+                $query->orWhere($critere['key'], 'like', '%'.$critere['valeur'].'%');
+            }
+        })
+            ->get();
+
+        session(['candidats' => $candidats]);
+
+        $this->redirectRoute('inscription.manage.candidature');
     }
 
     #[Title('Consulter / Modifier des candidatures')]

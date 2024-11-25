@@ -18,14 +18,14 @@
                 role="listbox"
                 aria-label="Liste des critères disponibles"
             >
-                @foreach ($this->criteresDisponibles as $critere)
+                @foreach ($this->criteresDisponibles as $key => $critere)
                     <button
                         class="flex w-full items-center rounded-md p-2 text-left text-sm hover:bg-purple-50 focus:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         role="option"
-                        wire:click="ajouterCritere('{{ $critere }}')"
+                        wire:click="ajouterCritere('{{ $key }}', '{{ $critere }}')"
                         tabindex="0"
-                        @keydown.enter="$wire.ajouterCritere('{{ $critere }}')"
-                        @keydown.space.prevent="$wire.ajouterCritere('{{ $critere }}')"
+                        @keydown.enter="$wire.ajouterCritere('{{ $key }}', '{{ $critere }}')"
+                        @keydown.space.prevent="$wire.ajouterCritere('{{ $key }}', '{{ $critere }}')"
                     >
                         <span class="mr-2">+</span>
                         {{ $critere }}
