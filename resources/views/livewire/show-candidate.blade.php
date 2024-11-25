@@ -1,3 +1,1 @@
-<div>
-    @dd($candidat)
-</div>
+<div></div>
