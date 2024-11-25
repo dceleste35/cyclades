@@ -40,3 +40,8 @@ php artisan migrate --seed
 ```bash
 npm run build
 ```
+
+### Lien
+
+acceder au site avec 
+http://cyclades.test
