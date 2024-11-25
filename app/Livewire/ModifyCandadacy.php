@@ -15,7 +15,7 @@ class ModifyCandadacy extends Component
         'N° Candidat',
         'N° Inscription',
         'Nom de famille',
-        'Nom d\'usage',
+        'Nom usage',
         'Prénoms',
     ];
 
@@ -23,14 +23,12 @@ class ModifyCandadacy extends Component
 
     public function ajouterCritere($critere)
     {
-        if (! in_array($critere, $this->criteresSelectionnes)) {
-            $this->criteresSelectionnes[] = $critere;
-            $this->valeursCriteres[$critere] = [
-                'comparateur' => 'egal',
-                'valeur' => '',
-            ];
-            $this->dispatch('criteresUpdated');
-        }
+        $this->criteresSelectionnes[] = $critere;
+        $this->valeursCriteres[$critere] = [
+            'comparateur' => 'egal',
+            'valeur' => '',
+        ];
+        $this->dispatch('criteresUpdated');
     }
 
     public function supprimerCritere($critere)

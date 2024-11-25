@@ -16,25 +16,22 @@
 
             {{-- Liste des critères avec navigation au clavier --}}
             <div
-                class="max-h-[calc(100vh-300px)] space-y-1 overflow-y-auto"
+                class="overflow-y-autop-2 max-h-[calc(100vh-300px)] space-y-1"
                 role="listbox"
                 aria-label="Liste des critères disponibles"
             >
                 @foreach ($this->criteresDisponibles as $critere)
-                    @if (! $filtreTexte || str_contains(strtolower($critere), strtolower($filtreTexte)))
-                        <button
-                            class="flex w-full items-center rounded-md p-2 text-left text-sm hover:bg-purple-50 focus:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            role="option"
-                            wire:click="ajouterCritere('{{ $critere }}')"
-                            tabindex="0"
-                            @keydown.enter="$wire.ajouterCritere('{{ $critere }}')"
-                            @keydown.space.prevent="$wire.ajouterCritere('{{ $critere }}')"
-                            {{ in_array($critere, $criteresSelectionnes) ? 'disabled' : '' }}
-                        >
-                            <span class="mr-2">+</span>
-                            {{ $critere }}
-                        </button>
-                    @endif
+                    <button
+                        class="flex w-full items-center rounded-md p-2 text-left text-sm hover:bg-purple-50 focus:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        role="option"
+                        wire:click="ajouterCritere('{{ $critere }}')"
+                        tabindex="0"
+                        @keydown.enter="$wire.ajouterCritere('{{ $critere }}')"
+                        @keydown.space.prevent="$wire.ajouterCritere('{{ $critere }}')"
+                    >
+                        <span class="mr-2">+</span>
+                        {{ $critere }}
+                    </button>
                 @endforeach
             </div>
         </div>
