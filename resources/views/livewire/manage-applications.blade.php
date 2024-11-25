@@ -12,7 +12,7 @@
             </a>
             <a
                 class="flex flex-col items-center rounded-lg border-2 border-transparent bg-white p-6 shadow-sm transition-shadow duration-200 hover:border-purple-200 hover:shadow-md"
-                href="#"
+                href="{{ route('inscription.manage.filter') }}"
             >
                 <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-purple-100">
                     <x-heroicon-o-user-group class="h-8 w-8 text-purple-600" />
