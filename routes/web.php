@@ -3,6 +3,7 @@
 use App\Livewire\Home;
 use App\Livewire\ManageApplications;
 use App\Livewire\ModifyCandadacy;
+use App\Livewire\ShowCandidate;
 use App\Livewire\ShowCandidates;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +14,6 @@ Route::name('inscription.')->group(function () {
         Route::get('/', ManageApplications::class)->name('all');
         Route::get('/filtres', ModifyCandadacy::class)->name('filter');
         Route::get('/candidatures', ShowCandidates::class)->name('candidature');
+        Route::get('/candidature/{candidate}', ShowCandidate::class)->name('profile');
     });
 });

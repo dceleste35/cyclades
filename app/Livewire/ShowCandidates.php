@@ -30,7 +30,7 @@ class ShowCandidates extends Component
 
     public function showCandidate($id)
     {
-        $this->redirectRoute('inscription.manage.candidature', ['id' => $id]);
+        $this->redirectRoute('inscription.manage.profile', ['candidate' => Candidate::find($id)]);
     }
 
     #[Title('Liste des candidatures')]
