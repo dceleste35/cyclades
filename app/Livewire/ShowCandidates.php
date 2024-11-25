@@ -28,13 +28,18 @@ class ShowCandidates extends Component
         $this->candidats = session('candidats');
     }
 
+    public function showCandidate($id)
+    {
+        $this->redirectRoute('inscription.manage.candidature', ['id' => $id]);
+    }
+
     #[Title('Liste des candidatures')]
     public function render()
     {
         $ids = $this->candidats->pluck('id')->toArray();
 
         $paginated = Candidate::whereIn('id', $ids)
-            ->paginate(10);
+            ->paginate(5);
 
         return view('livewire.show-candidates', [
             'paginated' => $paginated,

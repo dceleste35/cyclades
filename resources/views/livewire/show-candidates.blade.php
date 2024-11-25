@@ -1,134 +1,165 @@
 <div>
-    <div class="rounded-lg bg-white shadow" role="region" aria-label="Liste des candidatures">
-        <div class="flex items-center justify-between border-b p-4">
-            <input
-                class="rounded-lg border px-4 py-2"
-                type="search"
-                aria-label="Rechercher dans la liste des candidatures"
-                wire:model.debounce.300ms="search"
-                placeholder="Rechercher..."
-            />
+    {{-- Composant principal --}}
+    <div class="rounded-xl border border-gray-100 bg-white shadow-sm" role="region" aria-label="Liste des candidatures">
+        {{-- En-tête avec barre de recherche --}}
+        <div class="border-b border-gray-100 p-4">
+            <div class="relative">
+                <input
+                    class="w-full rounded-lg border border-gray-200 py-2 pl-10 pr-4 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 md:max-w-xs"
+                    type="search"
+                    aria-label="Rechercher dans la liste des candidatures"
+                    wire:model.debounce.300ms="search"
+                    placeholder="Rechercher un candidat..."
+                />
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                    </svg>
+                </span>
+            </div>
         </div>
 
+        {{-- Table responsive --}}
         <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200" role="grid" aria-labelledby="tableTitle" tabindex="0">
+            <table class="min-w-full divide-y divide-gray-200" role="grid">
                 <thead class="bg-gray-50">
-                    <tr role="row">
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            N° candidat
+                    <tr>
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                N° candidat
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            N° inscription
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                N° inscription
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            Nom
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                Nom
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            Prénom
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                Prénom
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            Naissance
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                Naissance
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            Nationalité
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                Nationalité
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            Qualification
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                Qualification
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            État
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                État
+                            </div>
                         </th>
-                        <th
-                            class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500"
-                            role="columnheader"
-                            scope="col"
-                            tabindex="-1"
-                        >
-                            Actions
+                        <th class="px-6 py-3 text-left">
+                            <div
+                                class="flex items-center gap-x-2 text-xs font-medium uppercase tracking-wider text-gray-500"
+                            >
+                                Actions
+                            </div>
                         </th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 bg-white">
                     @foreach ($paginated as $candidat)
                         <tr
-                            class="hover:bg-gray-50"
-                            role="row"
-                            tabindex="-1"
-                            wire:click="showCandidate({{ $candidat->id }})"
+                            class="group transition-colors focus-within:bg-gray-50 hover:bg-gray-50"
+                            wire:key="candidat-{{ $candidat->id }}"
                         >
-                            <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 {{ $candidat->numero_candidat }}
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 {{ $candidat->numero_inscription }}
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
+                            <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
                                 {{ $candidat->nom_famille }}
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 {{ $candidat->prenoms }}
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 {{ $candidat->date_naissance }}
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 {{ $candidat->nationalite }}
                             </td>
-                            <td class="px-6 py-4" role="gridcell" tabindex="-1">
+                            <td class="px-6 py-4 text-sm text-gray-900">
                                 {{ $candidat->qualification_presentee }}
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
-                                {{ $candidat->etat }}
+                            <td class="whitespace-nowrap px-6 py-4">
+                                <span
+                                    class="@switch($candidat->etat)
+                                        @case('En attente')
+                                            bg-yellow-100 text-yellow-800
+                                            @break
+                                        @case('Validé')
+                                            bg-green-100 text-green-800
+                                            @break
+                                        @case('Refusé')
+                                            bg-red-100 text-red-800
+                                            @break
+                                        @default
+                                            bg-gray-100 text-gray-800
+                                    @endswitch inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
+                                >
+                                    {{ $candidat->etat }}
+                                </span>
                             </td>
-                            <td class="flex justify-center gap-2 px-6 py-4" role="gridcell">
+                            <td class="px-6 py-4 text-right">
                                 <button
-                                    class="text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    class="inline-flex items-center justify-center rounded-lg p-2 text-gray-500 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                                     aria-label="Voir les détails de {{ $candidat->nom_famille }} {{ $candidat->prenoms }}"
-                                    tabindex="0"
                                     wire:click="showCandidate({{ $candidat->id }})"
                                 >
-                                    <span class="sr-only">Voir</span>
-                                    <x-heroicon-o-eye class="h-5 w-5" />
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                        />
+                                    </svg>
                                 </button>
                             </td>
                         </tr>
@@ -136,13 +167,14 @@
                 </tbody>
             </table>
         </div>
-        <nav class="px-4 py-3" role="navigation" aria-label="Pagination">
-            <div class="pagination-links">
-                {{ $paginated->links() }}
-            </div>
-        </nav>
+
+        {{-- Pagination --}}
+        <div class="border-t border-gray-200 px-4 py-3">
+            {{ $paginated->links('components.custom-pagination') }}
+        </div>
     </div>
 
+    {{-- Script pour la navigation au clavier --}}
     @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', function () {
