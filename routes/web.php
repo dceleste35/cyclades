@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Home::class)->name('home');
 
 Route::name('inscription.')->group(function () {
-    Route::get('gerer-les-candidatures', ManageApplications::class)->name('manage');
+    Route::prefix('gerer-les-candidatures')->name('manage.')->group(function () {
+        Route::get('/', ManageApplications::class)->name('all');
+    });
 });
