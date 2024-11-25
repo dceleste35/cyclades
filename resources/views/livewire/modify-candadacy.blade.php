@@ -1,6 +1,5 @@
 <div class="rounded-lg bg-white p-6 shadow-sm">
     <div class="grid grid-cols-1 gap-6 md:grid-cols-4">
-        {{-- Colonne de gauche : Liste des critères --}}
         <div class="rounded-lg bg-gray-50 p-4 md:col-span-1">
             <div class="mb-4" role="search">
                 <label class="mb-1 block text-sm font-medium text-gray-700" for="filtre">Filtrer les critères</label>
@@ -14,7 +13,6 @@
                 />
             </div>
 
-            {{-- Liste des critères avec navigation au clavier --}}
             <div
                 class="overflow-y-autop-2 max-h-[calc(100vh-300px)] space-y-1"
                 role="listbox"
@@ -36,7 +34,6 @@
             </div>
         </div>
 
-        {{-- Colonne de droite : Critères sélectionnés --}}
         <div class="min-h-96 space-y-4 md:col-span-3">
             @foreach ($this->criteresSelectionnes as $key => $critere)
                 <div
@@ -88,7 +85,6 @@
                 </div>
             @endforeach
 
-            {{-- Boutons d'action avec transition Alpine --}}
             <div
                 class="flex flex-wrap justify-end gap-4 pt-4"
                 x-data="rechercheAvancee()"
@@ -184,7 +180,6 @@
                 init() {
                     this.showButtons = @entangle('criteresSelectionnes').length > 0
 
-                    // Observer les changements dans criteresSelectionnes
                     $wire.on('criteresUpdated', () => {
                         this.showButtons = true
                     })
