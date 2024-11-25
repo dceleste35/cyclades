@@ -14,6 +14,7 @@ Herd installera automatiquement PHP, Composer, et configurera votre environnemen
 ### Cloner le projet
 
 ```bash
+cd /Herd
 git clone https://github.com/dceleste35/cyclades.git
 cd cyclades
 ```
