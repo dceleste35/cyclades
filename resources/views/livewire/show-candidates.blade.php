@@ -1,7 +1,6 @@
 <div>
     <div class="rounded-lg bg-white shadow" role="region" aria-label="Liste des candidatures">
         <div class="flex items-center justify-between border-b p-4">
-            <h2 class="text-lg font-semibold" id="tableTitle">Liste des candidatures</h2>
             <input
                 class="rounded-lg border px-4 py-2"
                 type="search"
@@ -91,7 +90,12 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200 bg-white">
                     @foreach ($paginated as $candidat)
-                        <tr class="hover:bg-gray-50" role="row" tabindex="-1">
+                        <tr
+                            class="hover:bg-gray-50"
+                            role="row"
+                            tabindex="-1"
+                            wire:click="showCandidate({{ $candidat->id }})"
+                        >
                             <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
                                 {{ $candidat->numero_candidat }}
                             </td>
@@ -116,27 +120,15 @@
                             <td class="whitespace-nowrap px-6 py-4" role="gridcell" tabindex="-1">
                                 {{ $candidat->etat }}
                             </td>
-                            <td class="flex gap-2 px-6 py-4" role="gridcell">
+                            <td class="flex justify-center gap-2 px-6 py-4" role="gridcell">
                                 <button
                                     class="text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     aria-label="Voir les détails de {{ $candidat->nom_famille }} {{ $candidat->prenoms }}"
                                     tabindex="0"
+                                    wire:click="showCandidate({{ $candidat->id }})"
                                 >
                                     <span class="sr-only">Voir</span>
-                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                        />
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                        />
-                                    </svg>
+                                    <x-heroicon-o-eye class="h-5 w-5" />
                                 </button>
                             </td>
                         </tr>
