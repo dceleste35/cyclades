@@ -24,8 +24,6 @@
                         role="option"
                         wire:click="ajouterCritere('{{ $key }}', '{{ $critere }}')"
                         tabindex="0"
-                        @keydown.enter="$wire.ajouterCritere('{{ $key }}', '{{ $critere }}')"
-                        @keydown.space.prevent="$wire.ajouterCritere('{{ $key }}', '{{ $critere }}')"
                     >
                         <span class="mr-2">+</span>
                         {{ $critere }}
