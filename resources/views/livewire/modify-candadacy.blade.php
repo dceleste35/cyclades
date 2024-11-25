@@ -14,7 +14,7 @@
             </div>
 
             <div
-                class="overflow-y-autop-2 max-h-[calc(100vh-300px)] space-y-1"
+                class="max-h-[calc(100vh-300px)] space-y-1 overflow-y-auto p-2"
                 role="listbox"
                 aria-label="Liste des critères disponibles"
             >
