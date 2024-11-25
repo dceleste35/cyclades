@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class ManageApplications extends Component
 {
-    #[Title('Gérer les candidatures')]
+    #[Title('Inscription - Gérer les inscriptions')]
     public function render()
     {
         return view('livewire.manage-applications');
