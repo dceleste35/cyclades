@@ -24,7 +24,6 @@
         },
     }"
 >
-    {{-- En-tête avec informations principales --}}
     <section
         class="mb-6 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm"
         aria-label="Informations principales du candidat"
@@ -93,7 +92,6 @@
         </div>
     </section>
 
-    {{-- Navigation par onglets --}}
     <nav
         class="mb-6 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm"
         aria-label="Sections du profil candidat"
@@ -101,14 +99,14 @@
         <div class="flex divide-x divide-gray-100" role="tablist" aria-label="Navigation des sections">
             <template x-for="(tab, index) in ['identification', 'informations', 'qualification']" :key="tab">
                 <button
-                    class="flex-1 px-6 py-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                    class="flex-1 px-6 py-4 text-sm font-medium"
                     role="tab"
                     :id="`${tab}-tab`"
                     :ref="`${tab}Tab`"
                     :aria-selected="activeTab === tab"
                     :aria-controls="`${tab}-panel`"
                     :tabindex="activeTab === tab ? 0 : -1"
-                    :class="activeTab === tab ? 'border-b-2 border-purple-500 text-purple-600' : 'text-gray-500 hover:text-gray-700'"
+                    :class="activeTab === tab ? 'border-b-2 border-purple-500 text-purple-100 bg-purple-500' : 'text-gray-500 hover:text-gray-700'"
                     @click="activeTab = tab"
                     @keydown="handleKeyNav($event, tab)"
                     x-text="tab.charAt(0).toUpperCase() + tab.slice(1)"
@@ -117,9 +115,7 @@
         </div>
     </nav>
 
-    {{-- Panneaux de contenu --}}
     <div class="mt-6">
-        {{-- Panneau Identification --}}
         <section
             class="space-y-6"
             id="identification-panel"
@@ -173,7 +169,6 @@
             </div>
         </section>
 
-        {{-- Panneau Informations --}}
         <section
             class="space-y-6"
             id="informations-panel"
@@ -219,7 +214,6 @@
             </div>
         </section>
 
-        {{-- Panneau Qualification --}}
         <section
             class="space-y-6"
             id="qualification-panel"
