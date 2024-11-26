@@ -1,6 +1,6 @@
 <header class="bg-white shadow" role="banner">
     <div class="container mx-auto px-4">
-        <nav aria-label="Menu principal" x-data>
+        <nav class="flex items-center justify-between" aria-label="Menu principal" x-data>
             <ul class="m-0 flex list-none space-x-6 p-0 py-4">
                 <li>
                     <a
@@ -80,6 +80,7 @@
                 <li><a class="text-gray-600 no-underline hover:text-gray-800" href="#">Orga-Affectation</a></li>
                 <li><a class="text-gray-600 no-underline hover:text-gray-800" href="#">Déroulement</a></li>
             </ul>
+            <img src="{{ asset('logo-cyclades.jpg') }}" alt="" />
         </nav>
     </div>
 </header>
