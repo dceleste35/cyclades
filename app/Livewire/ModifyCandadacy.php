@@ -44,7 +44,14 @@ class ModifyCandadacy extends Component
 
     public function ajouterCritere($key, $critere)
     {
-        $this->criteresSelectionnes[] = $critere;
+        if (in_array($critere, $this->criteresSelectionnes)) {
+
+            unset($this->criteresSelectionnes[$key]);
+
+            return $this->dispatch('criteresUpdated');
+        }
+
+        $this->criteresSelectionnes[$key] = $critere;
         $this->valeursCriteres[$critere] = [
             'key' => $key,
             'comparateur' => 'egal',

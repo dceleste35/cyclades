@@ -28,7 +28,8 @@
                         x-on:click="selected = !selected"
                         x-bind:class="{ 'bg-purple-500 text-purple-100': selected }"
                     >
-                        <span class="mr-2">+</span>
+                        <x-heroicon-o-plus class="mr-2 h-4 w-4 font-bold" x-show="!selected" />
+                        <x-heroicon-o-minus class="mr-2 h-4 w-4 font-bold" x-show="selected" />
                         {{ $critere }}
                     </button>
                 @endforeach
