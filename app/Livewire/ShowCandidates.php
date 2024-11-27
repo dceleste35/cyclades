@@ -39,7 +39,7 @@ class ShowCandidates extends Component
         $ids = $this->candidats->pluck('id')->toArray();
 
         $paginated = Candidate::whereIn('id', $ids)
-            ->paginate(5);
+            ->paginate(10);
 
         return view('livewire.show-candidates', [
             'paginated' => $paginated,

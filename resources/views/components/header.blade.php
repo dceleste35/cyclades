@@ -1,7 +1,7 @@
 <header class="bg-white shadow" role="banner">
     <div class="container mx-auto px-4">
-        <nav class="flex items-center justify-between" aria-label="Menu principal" x-data>
-            <ul class="m-0 flex list-none space-x-6 p-0 py-4">
+        <nav class="flex items-center justify-between" aria-label="Menu principal" x-data="{ open: false }">
+            <ul class="m-0 flex list-none items-center space-x-6 p-0 py-4">
                 <li>
                     <a
                         class="no-underline"
@@ -9,7 +9,7 @@
                         aria-current="page"
                         x-bind:class="
                             {{ request()->routeIs('home') }}
-                                ? 'text-blue-800 font-bold'
+                                ? 'text-purple-100 bg-purple-700 px-2 py-2 rounded-lg'
                                 : 'text-gray-500 hover:text-gray-700'
                         "
                     >
@@ -19,22 +19,19 @@
                 <li><a class="text-gray-600 no-underline hover:text-gray-800" href="#">Administration</a></li>
                 <li><a class="text-gray-600 no-underline hover:text-gray-800" href="#">Réglementation</a></li>
                 <li class="group relative">
-                    <a
+                    <button
                         class="no-underline"
-                        href="#"
-                        aria-haspopup="true"
-                        aria-expanded="false"
+                        x-bind:aria-expanded="open"
+                        x-on:click="open = !open"
                         x-bind:class="
                             {{ request()->routeIs('inscription.*') }}
-                                ? 'text-blue-800 font-bold'
+                                ? 'text-purple-100 bg-purple-700 px-2 py-2 rounded-lg font-bold'
                                 : 'text-gray-500 hover:text-gray-700'
                         "
                     >
                         Inscription
-                    </a>
-                    <ul
-                        class="absolute left-0 z-10 mt-1 hidden w-64 rounded-md bg-white shadow-lg group-focus-within:block group-hover:block"
-                    >
+                    </button>
+                    <ul class="absolute left-0 z-10 mt-1 w-64 rounded-md bg-white shadow-lg" x-show="open">
                         <li>
                             <a
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:bg-gray-100"
