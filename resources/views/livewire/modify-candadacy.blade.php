@@ -20,7 +20,7 @@
             >
                 @foreach ($this->criteresDisponibles as $key => $critere)
                     <button
-                        class="flex w-full items-center rounded-md p-2 text-left text-sm hover:bg-purple-50"
+                        class="flex w-full items-center rounded-md p-2 text-left text-sm hover:bg-purple-500 hover:text-purple-100 hover:ring-1 hover:ring-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
                         role="option"
                         wire:click="ajouterCritere('{{ $key }}', '{{ $critere }}')"
                         tabindex="0"
