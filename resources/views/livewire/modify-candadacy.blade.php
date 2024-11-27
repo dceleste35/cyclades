@@ -20,10 +20,13 @@
             >
                 @foreach ($this->criteresDisponibles as $key => $critere)
                     <button
-                        class="flex w-full items-center rounded-md p-2 text-left text-sm hover:bg-purple-50 focus:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        class="flex w-full items-center rounded-md p-2 text-left text-sm hover:bg-purple-50"
                         role="option"
                         wire:click="ajouterCritere('{{ $key }}', '{{ $critere }}')"
                         tabindex="0"
+                        x-data="{ selected: false }"
+                        x-on:click="selected = !selected"
+                        x-bind:class="{ 'bg-purple-500 text-purple-100': selected }"
                     >
                         <span class="mr-2">+</span>
                         {{ $critere }}
@@ -34,16 +37,16 @@
 
         <div class="min-h-96 space-y-4 md:col-span-3">
             @foreach ($this->criteresSelectionnes as $key => $critere)
-                <div
+                <fieldset
                     class="rounded-lg bg-gray-50 p-4"
                     role="group"
                     aria-labelledby="critere-{{ $key }}"
                     wire:key="{{ $key }}"
                 >
                     <div class="mb-2 flex items-center justify-between">
-                        <h3 class="text-sm font-medium text-gray-700" id="critere-{{ $key }}">
+                        <legend class="text-sm font-medium text-gray-700" id="critere-{{ $key }}">
                             {{ $critere }}
-                        </h3>
+                        </legend>
                         <button
                             class="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             type="button"
@@ -80,7 +83,7 @@
                             />
                         </div>
                     </div>
-                </div>
+                </fieldset>
             @endforeach
 
             <div
