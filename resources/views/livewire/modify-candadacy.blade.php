@@ -80,6 +80,7 @@
                                 type="text"
                                 aria-label="Valeur pour {{ $critere }}"
                                 wire:model.live="valeursCriteres.{{ $critere }}.valeur"
+                                placeholder="Valeur..."
                             />
                         </div>
                     </div>
