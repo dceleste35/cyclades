@@ -10,8 +10,6 @@ Herd installera automatiquement PHP, Composer, et configurera votre environnemen
 ### Vérifier le dossier racine de Herd
 ![image](https://github.com/user-attachments/assets/e975ee5a-2489-43aa-983a-d09493d6e581)
 
-### Installer NPM
-
 ### Cloner le projet
 
 ```bash
@@ -19,6 +17,7 @@ cd /Herd
 git clone https://github.com/dceleste35/cyclades.git
 cd cyclades
 ```
+### Installer NPM
 
 ### Installer les dépendances
 
