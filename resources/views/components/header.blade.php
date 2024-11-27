@@ -23,6 +23,7 @@
                         class="no-underline"
                         x-bind:aria-expanded="open"
                         x-on:click="open = !open"
+                        x-on:click.away="open = false"
                         x-bind:aria-label="open ? 'Fermer le menu Inscription' : 'Ouvrir le menu Inscription'"
                         x-bind:class="
                             {{ request()->routeIs('inscription.*') }}
